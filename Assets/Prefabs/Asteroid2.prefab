@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 9210489631213382150}
   - component: {fileID: 9042486704722324134}
   - component: {fileID: 6866477696934630560}
-  - component: {fileID: -2597270644506106608}
   - component: {fileID: 7664388405843462686}
   m_Layer: 0
   m_Name: Asteroid2
@@ -122,19 +121,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-2597270644506106608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8195872846537088205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12ff4231cee56e042a9717836082b92f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_hitPoints: 0
 --- !u!114 &7664388405843462686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,4 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ff4231cee56e042a9717836082b92f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hitPoints: 20
+  timeAlive: 10
+  gameManager: {fileID: 0}
