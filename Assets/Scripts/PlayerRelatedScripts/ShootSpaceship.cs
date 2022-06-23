@@ -15,13 +15,27 @@ public class ShootSpaceship : MonoBehaviour
 
     [SerializeField]
     AudioSource shootSound;
+     
 
-    bool canShoot;
+    [SerializeField]
+    int attacksPerSecond;
 
+    float timeBetweenAttacks;
+     
+
+    [SerializeField]
+    int maxAmmo;
+
+    [SerializeField]
+    float reloadTime; //in seconds
 
     [SerializeField]
     GameObject gameManager;
+
     bool enableThisScript;
+    bool canShoot;
+    bool reloadStarted;
+    int currentAmmo;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +43,9 @@ public class ShootSpaceship : MonoBehaviour
         enableThisScript = false;
         shootSound.Stop();
         canShoot = true;
+        currentAmmo = maxAmmo;
+        timeBetweenAttacks = (float)1000/ (attacksPerSecond *1000);
+        reloadStarted = false;
     }
 
     void EndOfTutorial(GameObject sender)
@@ -43,22 +60,68 @@ public class ShootSpaceship : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKey(KeyCode.Space) && canShoot){
+
+        if(currentAmmo <= 0 && !reloadStarted)
+        {
             
-            GameObject bullet = Instantiate(projectilePref);
-            bullet.transform.position = shootPoint.transform.position;
-            
-            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, speed);
-            shootSound.Play();
-            canShoot=false;
-            StartCoroutine(EnableShooting());
+            StopAllCoroutines();
+            canShoot = false;
+            reloadStarted = true;
+            StartCoroutine(Reload());
         }
+        else
+        {
+             
+            if (Input.GetKey(KeyCode.Space) && canShoot)
+            {
+                canShoot = false;
+                Shoot();
+                StartCoroutine(EnableShooting());
+                
+
+            }
+            
+            
+        }
+        
+    }
+
+
+    void Shoot()
+    {
+        GameObject bullet = Instantiate(projectilePref);
+        bullet.transform.position = shootPoint.transform.position;
+        
+        shootSound.Play();
+
+        currentAmmo -= 1;
+        
     }
 
     IEnumerator EnableShooting()
     {
-        yield return new WaitForSeconds(0.15f);
+        
+        yield return new WaitForSeconds(timeBetweenAttacks);
+
+        if (currentAmmo > 0 )
+        {
+            canShoot = true;
+        }
+        
+    }
+
+
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(reloadTime); 
+        currentAmmo = maxAmmo;
         canShoot = true;
+        reloadStarted = false;
+    }
+
+    public int GetCurrentAmmo()
+    {
+        return this.currentAmmo;
     }
 
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9042486704722324134}
   - component: {fileID: 6866477696934630560}
   - component: {fileID: 7664388405843462686}
+  - component: {fileID: -4763642230268588064}
   m_Layer: 0
   m_Name: Asteroid2
   m_TagString: Enemy
@@ -134,4 +135,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeAlive: 10
-  gameManager: {fileID: 0}
+--- !u!114 &-4763642230268588064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8195872846537088205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1263c0af730f15146abf38c94f9b9d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigBody: {fileID: 6866477696934630560}

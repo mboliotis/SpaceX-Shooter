@@ -57,15 +57,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\EnemyRelatedScripts\AsteroidGenerator.cs" />
+    <Compile Include="Assets\Scripts\EnemyRelatedScripts\AsteroidMovement.cs" />
     <Compile Include="Assets\Scripts\EnemyRelatedScripts\EnemyMechanics.cs" />
     <Compile Include="Assets\Scripts\EnemyRelatedScripts\IEnemy.cs" />
     <Compile Include="Assets\Scripts\GameMaster.cs" />
     <Compile Include="Assets\Scripts\LevelRelatedScripts\MoveBG.cs" />
+    <Compile Include="Assets\Scripts\MainMenuRelatedScripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerRelatedScripts\BulletMechanics.cs" />
+    <Compile Include="Assets\Scripts\PlayerRelatedScripts\BulletMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerRelatedScripts\MoveSpaceShip.cs" />
     <Compile Include="Assets\Scripts\PlayerRelatedScripts\ShootSpaceship.cs" />
     <Compile Include="Assets\Scripts\PlayerRelatedScripts\SpaceshipMechanics.cs" />
+    <Compile Include="Assets\Scripts\UIRelatedScripts\DisplayCurrentAmmo.cs" />
+    <Compile Include="Assets\Scripts\UIRelatedScripts\WriteTextOnScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

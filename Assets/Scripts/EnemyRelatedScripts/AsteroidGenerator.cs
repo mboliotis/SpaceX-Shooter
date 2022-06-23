@@ -24,7 +24,13 @@ public class AsteroidGenerator : MonoBehaviour,IEnemy
     bool enableThisScript;
     bool spawn;
 
-    
+    [SerializeField]
+    GameObject backgroundMoving;
+
+    [SerializeField]
+    float speed;
+     
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,14 +65,15 @@ public class AsteroidGenerator : MonoBehaviour,IEnemy
         if (spawn)
         {
             GameObject aster = Instantiate(asteroidPref, instaceLoc.transform.position, instaceLoc.transform.rotation);
-
-            float xvel = Random.Range(verticalAsteroidVelocityRange[0], verticalAsteroidVelocityRange[1]);
-            float yvel = Random.Range(horizontalAsteroidVelocityRange[0], horizontalAsteroidVelocityRange[1]); 
-            aster.GetComponent<Rigidbody2D>().velocity = new Vector2(xvel, yvel);
             Disable();
             StartCoroutine(EnableSpawn());
         }
-        
+
+        // Disable asteroid generator when at the end of level
+        if (backgroundMoving.GetComponent<MoveBG>().isStoped)
+        {
+            this.enabled = false;
+        }
 
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
@@ -8,44 +9,48 @@ public class GameMaster : MonoBehaviour
     AudioSource backgroundAudio;
 
     [SerializeField]
-    GameObject backgroundMoving;
+    GameObject panelToDisable;
 
     public delegate void EndOfTutorialEventHandler(GameObject sender);
 
     public event EndOfTutorialEventHandler OnEndOfTutorial;
 
 
-    public bool finishedTutor;
+    bool finishedTutor;
 
     // Start is called before the first frame update
     void Start()
     {
         backgroundAudio.Stop();
         finishedTutor = false;
+        PlayerPrefs.SetInt("CurrentLevel", SceneManager.GetActiveScene().buildIndex);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
 
+        
+        // fire the edn of tutorial event to enable all game mechanics
         if(OnEndOfTutorial != null && finishedTutor)
         {
             OnEndOfTutorial(this.gameObject);
         }
 
+        // play background music
         if (finishedTutor && !backgroundAudio.isPlaying)
         {
             backgroundAudio.time = 70f;
             backgroundAudio.Play();
         }
 
-        if (backgroundMoving.GetComponent<MoveBG>().isStoped)
-        {
-            this.gameObject.GetComponent<AsteroidGenerator>().enabled = false;
-        }
-
     }
 
+
+    public void DisableTutorial()
+    {
+        panelToDisable.SetActive(false);
+        finishedTutor = true;
+    }
 
 }
