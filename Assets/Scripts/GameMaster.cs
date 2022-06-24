@@ -9,7 +9,13 @@ public class GameMaster : MonoBehaviour
     AudioSource backgroundAudio;
 
     [SerializeField]
-    GameObject panelToDisable;
+    GameObject introPanel;
+
+    [SerializeField]
+    GameObject outroPanel;
+
+    [SerializeField]
+    GameObject levelHandler;
 
     public delegate void EndOfTutorialEventHandler(GameObject sender);
 
@@ -24,14 +30,21 @@ public class GameMaster : MonoBehaviour
         backgroundAudio.Stop();
         finishedTutor = false;
         PlayerPrefs.SetInt("CurrentLevel", SceneManager.GetActiveScene().buildIndex);
+        levelHandler.GetComponent<MoveBG>().OnLevelEnd += DisplayOutro;
     }
+
+    void DisplayOutro(GameObject obj)
+    {
+        outroPanel.SetActive(true);
+    }
+
 
     // Update is called once per frame
     void Update()
     {
 
         
-        // fire the edn of tutorial event to enable all game mechanics
+        // fire the end of tutorial event to enable all game mechanics
         if(OnEndOfTutorial != null && finishedTutor)
         {
             OnEndOfTutorial(this.gameObject);
@@ -49,7 +62,7 @@ public class GameMaster : MonoBehaviour
 
     public void DisableTutorial()
     {
-        panelToDisable.SetActive(false);
+        introPanel.SetActive(false);
         finishedTutor = true;
     }
 

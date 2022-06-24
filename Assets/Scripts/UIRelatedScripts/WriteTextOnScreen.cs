@@ -16,13 +16,15 @@ public class WriteTextOnScreen : MonoBehaviour
     [SerializeField]
     GameObject playButton;
 
+    [SerializeField]
+    MessagesToDisplay messageToDisplay;
 
     string dispMessage;
     int messagePos;
     // Start is called before the first frame update
     void Start()
     {
-        dispMessage = "Greetings Captain, in this mission your goal is to land On Mars!\nYou must be aware that there are many dangers!\nUse your Arrow keys to navigate and your Space Key to enable your cannons!\nElon Musk Out!";
+        dispMessage = messageToDisplay.message;
         messagePos = 0;
         playButton.SetActive(true);
     }

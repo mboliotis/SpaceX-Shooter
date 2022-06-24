@@ -9,6 +9,7 @@ ScriptsOnlyBuild:
     - EnemyMechanics
     - GameMaster
     - MainMenu
+    - MessagesToDisplay
     - MoveBG
     - MoveSpaceShip
     - PauseMenu
@@ -158,55 +159,55 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14038}
     - Class: 114
-      Script: {instanceID: 14478}
+      Script: {instanceID: 14112}
     - Class: 114
-      Script: {instanceID: 14516}
+      Script: {instanceID: 14480}
     - Class: 114
-      Script: {instanceID: 14726}
+      Script: {instanceID: 14518}
     - Class: 114
-      Script: {instanceID: 14950}
+      Script: {instanceID: 14728}
     - Class: 114
-      Script: {instanceID: 15058}
+      Script: {instanceID: 14952}
     - Class: 114
-      Script: {instanceID: 15062}
+      Script: {instanceID: 15060}
     - Class: 114
-      Script: {instanceID: 15084}
+      Script: {instanceID: 15064}
     - Class: 114
-      Script: {instanceID: 15092}
+      Script: {instanceID: 15086}
     - Class: 114
-      Script: {instanceID: 15258}
+      Script: {instanceID: 15094}
     - Class: 114
-      Script: {instanceID: 15308}
+      Script: {instanceID: 15260}
     - Class: 114
-      Script: {instanceID: 15320}
+      Script: {instanceID: 15310}
     - Class: 114
-      Script: {instanceID: 15602}
+      Script: {instanceID: 15322}
     - Class: 114
-      Script: {instanceID: 15764}
+      Script: {instanceID: 15604}
     - Class: 114
-      Script: {instanceID: 15864}
+      Script: {instanceID: 15766}
     - Class: 114
-      Script: {instanceID: 16214}
+      Script: {instanceID: 15866}
     - Class: 114
-      Script: {instanceID: 16288}
+      Script: {instanceID: 16216}
     - Class: 114
-      Script: {instanceID: 16492}
+      Script: {instanceID: 16290}
     - Class: 114
-      Script: {instanceID: 16558}
+      Script: {instanceID: 16494}
     - Class: 114
-      Script: {instanceID: 16840}
+      Script: {instanceID: 16560}
     - Class: 114
-      Script: {instanceID: 16844}
+      Script: {instanceID: 16842}
     - Class: 114
-      Script: {instanceID: 16894}
+      Script: {instanceID: 16846}
     - Class: 114
-      Script: {instanceID: 16928}
+      Script: {instanceID: 16896}
     - Class: 114
-      Script: {instanceID: 17096}
+      Script: {instanceID: 16930}
     - Class: 114
-      Script: {instanceID: 17104}
+      Script: {instanceID: 17098}
     - Class: 114
-      Script: {instanceID: 19754}
+      Script: {instanceID: 17106}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -275,31 +276,33 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13904}
     - Class: 114
-      Script: {instanceID: 14440}
+      Script: {instanceID: 14442}
     - Class: 114
-      Script: {instanceID: 14478}
+      Script: {instanceID: 14480}
     - Class: 114
-      Script: {instanceID: 14726}
+      Script: {instanceID: 14728}
     - Class: 114
-      Script: {instanceID: 15058}
+      Script: {instanceID: 15060}
     - Class: 114
-      Script: {instanceID: 15062}
+      Script: {instanceID: 15064}
     - Class: 114
-      Script: {instanceID: 15436}
+      Script: {instanceID: 15438}
     - Class: 114
-      Script: {instanceID: 15602}
+      Script: {instanceID: 15604}
     - Class: 114
-      Script: {instanceID: 15712}
+      Script: {instanceID: 15714}
     - Class: 114
-      Script: {instanceID: 16352}
+      Script: {instanceID: 16354}
     - Class: 114
-      Script: {instanceID: 16522}
+      Script: {instanceID: 16524}
     - Class: 114
-      Script: {instanceID: 16894}
+      Script: {instanceID: 16896}
     - Class: 114
-      Script: {instanceID: 16998}
+      Script: {instanceID: 17000}
     - Class: 114
-      Script: {instanceID: 17004}
+      Script: {instanceID: 17006}
+    - Class: 114
+      Script: {instanceID: 18812}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -727,7 +730,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerIndirectToggle
   - hash:
       serializedVersion: 2
-      Hash: 604d6fa507146ee96a7518b117b1af9e
+      Hash: d0d5d90221f0acafebe72fbcda318c9d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WriteTextOnScreen
@@ -775,6 +778,12 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerToggleHistory
   - hash:
       serializedVersion: 2
+      Hash: d3994abbaad76c1966d1061a5970202d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainMenu
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -799,7 +808,7 @@ ScriptsOnlyBuild:
     className: VolumeProfile
   - hash:
       serializedVersion: 2
-      Hash: f988656785f44a098ea5f11b27fba19b
+      Hash: 43c6a6941e5f028950b12e7032206e04
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameMaster
@@ -1267,10 +1276,10 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: d3994abbaad76c1966d1061a5970202d
+      Hash: ad2c6bc3fefd49fd79e1e4f93d1ed2fa
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: MainMenu
+    className: MessagesToDisplay
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
