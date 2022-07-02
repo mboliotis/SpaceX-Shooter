@@ -135,6 +135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeAlive: 10
+  asteroidExplosionParticleSystem: {fileID: 8130567712722457294, guid: fd084e6d4d015e14990d2b928b50ae29,
+    type: 3}
 --- !u!114 &-4763642230268588064
 MonoBehaviour:
   m_ObjectHideFlags: 0

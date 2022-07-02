@@ -8,6 +8,12 @@ public class BulletMechanics : MonoBehaviour
     [SerializeField]
     float m_damage;
 
+    [SerializeField]
+    GameObject collisionSparks;
+
+    [SerializeField]
+    GameObject sparkPoint;
+
     
     // Start is called before the first frame update
     void Start()
@@ -32,11 +38,16 @@ public class BulletMechanics : MonoBehaviour
         if (col.gameObject.CompareTag("Enemy"))
         {
             col.gameObject.GetComponent<EnemyMechanics>().TakeDamage(this.Damage);
-            
+            GameObject sparks = Instantiate(collisionSparks);
+            Debug.Log(sparks);
+            sparks.transform.position = this.gameObject.transform.position;
+
         }
         
         Destroy(this.gameObject);
+
     }
+
      
 
     IEnumerator LifeSpan()

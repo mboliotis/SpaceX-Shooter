@@ -8,7 +8,9 @@ public class EnemyMechanics : MonoBehaviour
     [SerializeField]
     float timeAlive;
 
-    
+    [SerializeField]
+    GameObject asteroidExplosionParticleSystem;
+
     GameObject gameManager;
     bool enableThisScript;
 
@@ -37,6 +39,10 @@ public class EnemyMechanics : MonoBehaviour
         }
         if (HP <= 0 )
         {
+            GameObject asterPartSys = Instantiate(asteroidExplosionParticleSystem);
+            asterPartSys.transform.position = this.gameObject.transform.position;
+
+
             Destroy(this.gameObject);
         }
 
