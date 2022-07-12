@@ -29,7 +29,7 @@ public class GameMaster : MonoBehaviour
     {
         backgroundAudio.Stop();
         finishedTutor = false;
-        PlayerPrefs.SetInt("CurrentLevel", SceneManager.GetActiveScene().buildIndex);
+        PlayerPrefs.SetInt("CurrentLevel", SceneManager.GetActiveScene().buildIndex);// save player's progress
         levelHandler.GetComponent<MoveBG>().OnLevelEnd += DisplayOutro;
     }
 
@@ -48,6 +48,7 @@ public class GameMaster : MonoBehaviour
         if(OnEndOfTutorial != null && finishedTutor)
         {
             OnEndOfTutorial(this.gameObject);
+           
         }
 
         // play background music

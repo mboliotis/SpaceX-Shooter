@@ -37,9 +37,9 @@ public class BulletMechanics : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Enemy"))
         {
-            col.gameObject.GetComponent<EnemyMechanics>().TakeDamage(this.Damage);
+            
+            col.gameObject.GetComponent<CommonEnemyInterface>().TakeDamage(this.Damage);
             GameObject sparks = Instantiate(collisionSparks);
-            Debug.Log(sparks);
             sparks.transform.position = this.gameObject.transform.position;
 
         }

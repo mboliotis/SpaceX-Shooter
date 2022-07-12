@@ -6,7 +6,7 @@ public class SpaceshipMechanics : MonoBehaviour
 {
 
     [SerializeField]
-    List<GameObject> HP = new List<GameObject>();
+    List<GameObject> HP = new List<GameObject>(); // hit points GUI ref
 
 
     [SerializeField]

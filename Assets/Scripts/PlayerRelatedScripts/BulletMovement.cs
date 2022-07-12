@@ -27,4 +27,17 @@ public class BulletMovement : MonoBehaviour
     {
         rigBody.MovePosition(new Vector2(transform.position.x + velocity.x, transform.position.y + velocity.y));
     }
+
+    public Vector2 Direction
+    {
+        get { return direction; }
+        set { direction = value; }
+    }
+
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
+
 }

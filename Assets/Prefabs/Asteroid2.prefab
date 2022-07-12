@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6866477696934630560}
   - component: {fileID: 7664388405843462686}
   - component: {fileID: -4763642230268588064}
+  - component: {fileID: 1778468136279877828}
   m_Layer: 0
   m_Name: Asteroid2
   m_TagString: Enemy
@@ -95,7 +96,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -150,3 +151,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigBody: {fileID: 6866477696934630560}
+--- !u!114 &1778468136279877828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8195872846537088205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657be5b382c4a47489f028d57a9de7cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPoints: 10

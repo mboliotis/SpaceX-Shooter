@@ -43,6 +43,7 @@ public class MoveBG : MonoBehaviour
 
     void EndOfTutorial(GameObject sender)
     {
+         
         this.enableThisScript = true;
     }
 
