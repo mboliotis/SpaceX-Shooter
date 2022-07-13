@@ -19,11 +19,11 @@ public class EnemySpaceShipMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager.GetComponent<GameMaster>().OnEndOfTutorial += GamePause;
+        gameManager.GetComponent<GameMaster>().OnGameReady += GamePause;
         gamePaused = true;
     }
 
-    void GamePause(GameObject sender)
+    void GamePause(EventReason sender)
     {
         
         gamePaused = false;

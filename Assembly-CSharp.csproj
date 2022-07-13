@@ -65,9 +65,13 @@
     <Compile Include="Assets\Scripts\EnemyRelatedScripts\EnemySpaceShipMovement.cs" />
     <Compile Include="Assets\Scripts\EnemyRelatedScripts\EnemySpaceshipShoot.cs" />
     <Compile Include="Assets\Scripts\EnemyRelatedScripts\IEnemy.cs" />
+    <Compile Include="Assets\Scripts\EventReason.cs" />
+    <Compile Include="Assets\Scripts\GameManagerIO.cs" />
     <Compile Include="Assets\Scripts\GameMaster.cs" />
-    <Compile Include="Assets\Scripts\LevelRelatedScripts\MoveBG.cs" />
+    <Compile Include="Assets\Scripts\LevelRelatedScripts\NormalLevelScripts\CommonBackgroundInterface.cs" />
+    <Compile Include="Assets\Scripts\LevelRelatedScripts\TutorialScripts\MoveBG.cs" />
     <Compile Include="Assets\Scripts\MainMenuRelatedScripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\MessageEnum.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerRelatedScripts\BulletMechanics.cs" />
     <Compile Include="Assets\Scripts\PlayerRelatedScripts\BulletMovement.cs" />

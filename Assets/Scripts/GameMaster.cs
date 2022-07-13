@@ -12,59 +12,89 @@ public class GameMaster : MonoBehaviour
     GameObject introPanel;
 
     [SerializeField]
-    GameObject outroPanel;
+    GameObject pauseMenu;
 
     [SerializeField]
-    GameObject levelHandler;
+    GameObject outroPanel;
+     
 
-    public delegate void EndOfTutorialEventHandler(GameObject sender);
+    [SerializeField]
+    float musicStartTime;
 
-    public event EndOfTutorialEventHandler OnEndOfTutorial;
+    //================= Event Section ================= 
+    /*
+     * The game manager can fire events to inform other game objects.
+     */
+    public delegate void LevelManagmentEvents(EventReason fireReason); 
 
+    public event LevelManagmentEvents OnGameReady; 
+    //================= Event Section ================= 
 
-    bool finishedTutor;
-
+    bool introMessageEnded;
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         backgroundAudio.Stop();
-        finishedTutor = false;
-        PlayerPrefs.SetInt("CurrentLevel", SceneManager.GetActiveScene().buildIndex);// save player's progress
-        levelHandler.GetComponent<MoveBG>().OnLevelEnd += DisplayOutro;
+        introMessageEnded = false; 
+        PlayerPrefs.SetInt("CurrentLevel", SceneManager.GetActiveScene().buildIndex);// save player's progress 
     }
 
-    void DisplayOutro(GameObject obj)
-    {
-        outroPanel.SetActive(true);
-    }
+    
 
 
     // Update is called once per frame
     void Update()
     {
-
         
-        // fire the end of tutorial event to enable all game mechanics
-        if(OnEndOfTutorial != null && finishedTutor)
-        {
-            OnEndOfTutorial(this.gameObject);
-           
-        }
-
         // play background music
-        if (finishedTutor && !backgroundAudio.isPlaying)
+        if (introMessageEnded && !backgroundAudio.isPlaying)
         {
-            backgroundAudio.time = 70f;
+            backgroundAudio.time = musicStartTime;
             backgroundAudio.Play();
         }
 
     }
 
+    
 
-    public void DisableTutorial()
+    /*
+     * Interface for UI buttons at the intro panel
+     */
+    public void DisableIntroPanel()
     {
-        introPanel.SetActive(false);
-        finishedTutor = true;
+        introPanel.SetActive(false); 
+        if (OnGameReady != null )
+        {
+            OnGameReady(EventReason.GAME_START);
+
+        }
+        introMessageEnded = true;
     }
 
+
+    public void DisplayPauseMenu()
+    {
+        this.gameObject.GetComponent<PauseMenu>().ToggleMenu = true;
+    }
+
+    public void PlayerDied()
+    {
+         
+        this.gameObject.GetComponent<PauseMenu>().PlayerDied = true; 
+    }
+
+
+
+    /*
+     * Used to display some message at the end of the level
+     */
+    public void DisplayOutro()
+    {
+        outroPanel.SetActive(true);
+        if (OnGameReady != null)
+        {
+            OnGameReady(EventReason.GAME_STOP);
+
+        }
+    }
 }

@@ -4888,6 +4888,7 @@ MonoBehaviour:
   rightBoundary: 12
   topBoundary: 5
   bottomBoundary: -5
+  gameManager: {fileID: 0}
 --- !u!114 &3566587562924519231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4905,6 +4906,11 @@ MonoBehaviour:
   shootPoint: {fileID: 8714500117591256727}
   speed: 5
   shootSound: {fileID: 798255956}
+  attacksPerSecond: 3
+  maxAmmo: 10
+  reloadTime: 2
+  gameManager: {fileID: 0}
+  scriptEnabler: {fileID: 0}
 --- !u!114 &-1890723922453175208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4922,6 +4928,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   gameManager: {fileID: 0}
+  flashScreenOnDamage: {fileID: 0}
 --- !u!60 &-6334501984799734403
 PolygonCollider2D:
   m_ObjectHideFlags: 0

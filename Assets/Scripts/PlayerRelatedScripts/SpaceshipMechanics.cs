@@ -14,12 +14,14 @@ public class SpaceshipMechanics : MonoBehaviour
 
     [SerializeField]
     GameObject flashScreenOnDamage;
- 
+
+    bool deathNotificationSent;
 
     // Start is called before the first frame update
     void Start()
     {
         flashScreenOnDamage.SetActive(false);
+        deathNotificationSent = false;  
     }
 
 
@@ -28,10 +30,12 @@ public class SpaceshipMechanics : MonoBehaviour
     void Update()
     {   
          
-        if(HP.Count <= 0)
+        if(HP.Count <= 0 && !deathNotificationSent)
         {
+
             // when HP is low, inform game manager to show restart menu
-            gameManager.GetComponent<PauseMenu>().IsDead = true;
+            gameManager.GetComponent<GameManagerIO>().WriteToBuffer(MessageEnum.PLAYER_DEAD);
+            deathNotificationSent = true;
         }
     }
 

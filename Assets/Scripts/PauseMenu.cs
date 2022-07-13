@@ -8,47 +8,60 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     GameObject pauseMenu;
 
-
     bool toggleMenu;
-
-    bool isDead;
+    bool playerDied;
     // Start is called before the first frame update
     void Start()
     {
-        toggleMenu = false;
-        isDead = false;
+        toggleMenu = false; 
+        playerDied = false;
     }
-
-    public bool IsDead
-    {
-        get { return isDead; }
-        set { isDead = value; }
-    }
-
+     
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !isDead)
+        if (playerDied)
+        {
+            ShowMenu();
+            return; 
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) )
         {
             toggleMenu = !toggleMenu;
             
         }
 
-        if (toggleMenu || isDead)
+        if (toggleMenu )
         {
             ShowMenu();
         }
         else
         {
             HideMenu();
+            
         }
 
+
+
+    }
+
+    public bool PlayerDied
+    {
+        get { return playerDied; }  
+        set { playerDied = value; }
+    }
+
+    public bool ToggleMenu
+    {
+        get { return toggleMenu; }
+        set { toggleMenu = value; }
     }
 
     void ShowMenu()
     {
-        Time.timeScale = 0;
         pauseMenu.SetActive(true);
+        Time.timeScale = 0;
+        
     }
 
     void HideMenu()
@@ -65,7 +78,7 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void BackToMainMenu()

@@ -35,14 +35,25 @@ public class AsteroidGenerator : MonoBehaviour,IEnemy
     // Start is called before the first frame update
     void Start()
     {
-        gameManager.GetComponent<GameMaster>().OnEndOfTutorial += EndOfTutorial; // subscribe to event: End of Tutorial
+        gameManager.GetComponent<GameMaster>().OnGameReady += EndOfTutorial; // subscribe to event: End of Tutorial
         enableThisScript = false;
         Enable();
     }
 
-    void EndOfTutorial(GameObject sender)
+    void EndOfTutorial(EventReason sender)
     {
-        this.enableThisScript = true;
+        if(sender == EventReason.GAME_START)
+        {
+            this.enableThisScript = true;
+        }
+        else
+        {
+            if(sender == EventReason.GAME_STOP)
+            {
+                this.enableThisScript = false;
+            }
+        }
+        
     }
 
     public void Disable()

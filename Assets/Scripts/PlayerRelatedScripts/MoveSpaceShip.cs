@@ -27,13 +27,21 @@ public class MoveSpaceShip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager.GetComponent<GameMaster>().OnEndOfTutorial += EndOfTutorial; // subscribe to event: End of Tutorial
+        gameManager.GetComponent<GameMaster>().OnGameReady += EndOfTutorial; // subscribe to event: End of Tutorial
         enableThisScript = false;
     }
 
-    void EndOfTutorial(GameObject sender)
+    void EndOfTutorial(EventReason sender)
     {
-        this.enableThisScript = true;
+        if(sender == EventReason.GAME_START)
+        {
+            this.enableThisScript = true;
+        }
+        else
+        {
+            this.enableThisScript = false;
+        }
+        
     }
 
     // Update is called once per frame

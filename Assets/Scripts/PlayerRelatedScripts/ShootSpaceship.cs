@@ -30,7 +30,8 @@ public class ShootSpaceship : MonoBehaviour
     float reloadTime; //in seconds
 
     [SerializeField]
-    GameObject gameManager;
+    GameObject gameManager; //optional (legacy)
+     
 
     bool enableThisScript;
     bool canShoot;
@@ -39,7 +40,9 @@ public class ShootSpaceship : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager.GetComponent<GameMaster>().OnEndOfTutorial += EndOfTutorial; // subscribe to event: End of Tutorial
+        gameManager.GetComponent<GameMaster>().OnGameReady += EndOfTutorial; // subscribe to event: End of Tutorial
+        
+       
         enableThisScript = false;
         shootSound.Stop();
         canShoot = true;
@@ -48,9 +51,17 @@ public class ShootSpaceship : MonoBehaviour
         reloadStarted = false;
     }
 
-    void EndOfTutorial(GameObject sender)
+    void EndOfTutorial(EventReason sender)
     {
-        this.enableThisScript = true;
+        if(sender == EventReason.GAME_START)
+        {
+            this.enableThisScript = true;
+        }
+        else
+        {
+            this.enableThisScript = false;
+        }
+        
     }
 
     // Update is called once per frame

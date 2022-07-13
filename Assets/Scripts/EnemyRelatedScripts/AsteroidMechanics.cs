@@ -22,12 +22,12 @@ public class AsteroidMechanics : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("Game Manager");
-        gameManager.GetComponent<GameMaster>().OnEndOfTutorial += EndOfTutorial; // subscribe to event: End of Tutorial
+        gameManager.GetComponent<GameMaster>().OnGameReady += EndOfTutorial; // subscribe to event: End of Tutorial
         enableThisScript = false; 
         StartCoroutine(LifeSpan());
     }
 
-    void EndOfTutorial(GameObject sender)
+    void EndOfTutorial(EventReason sender)
     {
         this.enableThisScript = true;
     }
