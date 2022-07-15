@@ -57,22 +57,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ScriptableObjects\MessagesToDisplay.cs" />
-    <Compile Include="Assets\Scripts\EnemyRelatedScripts\AsteroidGenerator.cs" />
-    <Compile Include="Assets\Scripts\EnemyRelatedScripts\AsteroidMechanics.cs" />
-    <Compile Include="Assets\Scripts\EnemyRelatedScripts\AsteroidMovement.cs" />
+    <Compile Include="Assets\Scripts\EnemyRelatedScripts\Asteroid\AsteroidGenerator.cs" />
+    <Compile Include="Assets\Scripts\EnemyRelatedScripts\Asteroid\AsteroidGeneratorVol2.cs" />
+    <Compile Include="Assets\Scripts\EnemyRelatedScripts\Asteroid\AsteroidMechanics.cs" />
+    <Compile Include="Assets\Scripts\EnemyRelatedScripts\Asteroid\AsteroidMovement.cs" />
+    <Compile Include="Assets\Scripts\EnemyRelatedScripts\Bullets\EnemyBulletMechanics.cs" />
     <Compile Include="Assets\Scripts\EnemyRelatedScripts\CommonEnemyInterface.cs" />
-    <Compile Include="Assets\Scripts\EnemyRelatedScripts\EnemyBulletMechanics.cs" />
-    <Compile Include="Assets\Scripts\EnemyRelatedScripts\EnemySpaceShipMovement.cs" />
-    <Compile Include="Assets\Scripts\EnemyRelatedScripts\EnemySpaceshipShoot.cs" />
     <Compile Include="Assets\Scripts\EnemyRelatedScripts\IEnemy.cs" />
-    <Compile Include="Assets\Scripts\EventReason.cs" />
-    <Compile Include="Assets\Scripts\GameManagerIO.cs" />
-    <Compile Include="Assets\Scripts\GameMaster.cs" />
+    <Compile Include="Assets\Scripts\EnemyRelatedScripts\Spaceship\DeathHandler.cs" />
+    <Compile Include="Assets\Scripts\EnemyRelatedScripts\Spaceship\DestroyParticles.cs" />
+    <Compile Include="Assets\Scripts\EnemyRelatedScripts\Spaceship\EnemySpaceShipMovement.cs" />
+    <Compile Include="Assets\Scripts\EnemyRelatedScripts\Spaceship\EnemySpaceshipShoot.cs" />
+    <Compile Include="Assets\Scripts\LevelManagment\EventReason.cs" />
+    <Compile Include="Assets\Scripts\LevelManagment\GameManagerIO.cs" />
+    <Compile Include="Assets\Scripts\LevelManagment\GameMaster.cs" />
+    <Compile Include="Assets\Scripts\LevelManagment\MessageEnum.cs" />
+    <Compile Include="Assets\Scripts\LevelManagment\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\LevelRelatedScripts\NormalLevelScripts\CommonBackgroundInterface.cs" />
     <Compile Include="Assets\Scripts\LevelRelatedScripts\TutorialScripts\MoveBG.cs" />
     <Compile Include="Assets\Scripts\MainMenuRelatedScripts\MainMenu.cs" />
-    <Compile Include="Assets\Scripts\MessageEnum.cs" />
-    <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerRelatedScripts\BulletMechanics.cs" />
     <Compile Include="Assets\Scripts\PlayerRelatedScripts\BulletMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerRelatedScripts\MoveSpaceShip.cs" />

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4442487493515949174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.925, z: 0}
+  m_LocalPosition: {x: 0, y: -2.74, z: 0}
   m_LocalScale: {x: 1.283436, y: -1.283436, z: 1.283436}
   m_Children: []
   m_Father: {fileID: 4442487493833072676}
@@ -95,8 +95,8 @@ GameObject:
   - component: {fileID: 4442487493833072680}
   - component: {fileID: 4442487493833072681}
   - component: {fileID: 4442487493833072682}
-  - component: {fileID: 4442487493833072678}
   - component: {fileID: 4442487493833072683}
+  - component: {fileID: -5901040415690695179}
   m_Layer: 0
   m_Name: EnemySpaceship_Easy
   m_TagString: Enemy
@@ -202,23 +202,8 @@ MonoBehaviour:
     type: 3}
   shootPoint: {fileID: 4442487494132297274}
   timeBetweenAttacks: 0.3
+  detectionRange: 20
   shootAudioSource: {fileID: 4442487493833072683}
---- !u!58 &4442487493833072678
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4442487493833072675}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -12.270437}
-  serializedVersion: 2
-  m_Radius: 12.770436
 --- !u!82 &4442487493833072683
 AudioSource:
   m_ObjectHideFlags: 0
@@ -237,7 +222,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -315,6 +300,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5901040415690695179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4442487493833072675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0a352a003d692429df2630f214c1a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceshipExplosion: {fileID: 185725106959672983, guid: 676080b0bf6ac8a4db6ed41facc5280a,
+    type: 3}
 --- !u!1 &4442487494132297274
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +338,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4442487494132297274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10.25, z: 0}
+  m_LocalPosition: {x: 0, y: -5.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4442487493833072676}

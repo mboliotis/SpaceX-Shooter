@@ -4814,7 +4814,7 @@ Transform:
   m_GameObject: {fileID: 8714500118817360983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 8714500117591256724}
   - {fileID: 7591994597858718215}
@@ -4859,7 +4859,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 5c5ab2e5e1c6cfb4782c25265f55e522, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4884,10 +4884,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manouverSpeed: 10
-  lefttBoundary: -12
-  rightBoundary: 12
-  topBoundary: 5
-  bottomBoundary: -5
+  lefttBoundary: -6
+  rightBoundary: 6.22
+  topBoundary: 2.9
+  bottomBoundary: -2.29
   gameManager: {fileID: 0}
 --- !u!114 &3566587562924519231
 MonoBehaviour:
@@ -4906,11 +4906,10 @@ MonoBehaviour:
   shootPoint: {fileID: 8714500117591256727}
   speed: 5
   shootSound: {fileID: 798255956}
-  attacksPerSecond: 3
+  attacksPerSecond: 2
   maxAmmo: 10
   reloadTime: 2
   gameManager: {fileID: 0}
-  scriptEnabler: {fileID: 0}
 --- !u!114 &-1890723922453175208
 MonoBehaviour:
   m_ObjectHideFlags: 0

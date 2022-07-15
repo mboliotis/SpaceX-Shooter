@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6970557308129721349}
   - component: {fileID: 6970557308129721347}
   - component: {fileID: 6970557308129721348}
+  - component: {fileID: 316568747}
   m_Layer: 5
   m_Name: Ammo Indicator
   m_TagString: Untagged
@@ -76,6 +77,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &316568747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970557308129721350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afc4f12094c8de64a87b13b3aa0df868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoIndicator: {fileID: 6970557308190856117}
+  player: {fileID: 0}
 --- !u!1 &6970557308190856119
 GameObject:
   m_ObjectHideFlags: 0

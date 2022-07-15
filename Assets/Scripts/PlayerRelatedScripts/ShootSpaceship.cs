@@ -9,6 +9,7 @@ public class ShootSpaceship : MonoBehaviour
 
     [SerializeField]
     GameObject shootPoint;
+     
 
     [SerializeField]
     float speed;
@@ -101,7 +102,7 @@ public class ShootSpaceship : MonoBehaviour
     void Shoot()
     {
         GameObject bullet = Instantiate(projectilePref);
-        bullet.transform.position = shootPoint.transform.position;
+        bullet.transform.position = shootPoint.transform.position + new Vector3(0, 2f, 0);
         
         shootSound.Play();
 

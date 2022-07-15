@@ -12,6 +12,8 @@ public class CommonBackgroundInterface : MonoBehaviour
     Rigidbody2D rbody;
     [SerializeField]
     Vector2 stopTarget;
+    [SerializeField]
+    GameObject levelManager;
 
     /* 
      * Use this events to enable behaviours on other game objects in game.
@@ -44,7 +46,21 @@ public class CommonBackgroundInterface : MonoBehaviour
     {
         OnLevelStartLock = false;
         OnLevelEndLock = false;
-        ScriptLock = false;
+        ScriptLock = true;
+
+        levelManager.GetComponent<GameMaster>().OnGameReady += EnableDisableScript;
+    }
+
+    public void EnableDisableScript(EventReason evt)
+    {
+        if(evt == EventReason.GAME_START)
+        {
+            ScriptLock = false;
+        }
+        else
+        {
+            ScriptLock = true;
+        }
     }
 
     // Update is called once per frame

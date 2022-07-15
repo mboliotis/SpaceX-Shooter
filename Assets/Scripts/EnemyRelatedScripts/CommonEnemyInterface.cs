@@ -20,6 +20,7 @@ public class CommonEnemyInterface : MonoBehaviour
         if(hitPoints <= 0)
         {
             Death();
+            
         }
     }
 
@@ -35,8 +36,10 @@ public class CommonEnemyInterface : MonoBehaviour
     }
 
     void Death()
-    {
+    { 
         Destroy(this.gameObject);
     }
+
+
 
 }
