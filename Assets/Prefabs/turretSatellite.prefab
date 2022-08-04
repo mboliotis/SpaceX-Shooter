@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 7327943054614422602}
   - component: {fileID: 7327943054614422601}
   - component: {fileID: 7327943054614422599}
+  - component: {fileID: 5070992080813105447}
   - component: {fileID: 7327943054614422600}
   - component: {fileID: 7327943054614422598}
+  - component: {fileID: -1306853392952263163}
   m_Layer: 0
   m_Name: turretSatellite
   m_TagString: Enemy
@@ -28,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7327943054614422604}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.53, y: 2.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -68,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 657be5b382c4a47489f028d57a9de7cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 50
+  hitPoints: 20
 --- !u!114 &7327943054614422599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +85,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceshipExplosion: {fileID: 185725106959672983, guid: 676080b0bf6ac8a4db6ed41facc5280a,
     type: 3}
+--- !u!114 &5070992080813105447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7327943054614422604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efbcc58910eb04946b8dd10b391894cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigit: {fileID: 7327943054614422598}
+  speed: 5
+  gameManager: {fileID: 0}
 --- !u!70 &7327943054614422600
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -120,6 +137,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-1306853392952263163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7327943054614422604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2182ad196e00c640ab2d63473aa55a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7327943055068837483
 GameObject:
   m_ObjectHideFlags: 0
@@ -5147,7 +5176,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7327943056275666833}
   - component: {fileID: 7327943056275666832}
-  - component: {fileID: 7327943056275666927}
   m_Layer: 0
   m_Name: turretCannon
   m_TagString: Untagged
@@ -5221,24 +5249,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &7327943056275666927
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7327943056275666834}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

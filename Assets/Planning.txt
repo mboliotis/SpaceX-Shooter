@@ -1,3 +1,6 @@
 At Level Design: 
 	Set the z-coordinate equal to -1 for asteroid spawner.
 	Use the AsteroidGeneratorVol2 (Vol1 is only for tutorial)
+
+	TO DO:
+		satelite wave move
