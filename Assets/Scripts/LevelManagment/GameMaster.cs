@@ -112,6 +112,15 @@ public class GameMaster : MonoBehaviour
         }
     }
 
+    public void MissionFailed() {
+        if (OnGameReady != null)
+        {
+            OnGameReady(EventReason.GAME_STOP);
+            
+
+        }
+        
+    }
 
 
 }

@@ -71,6 +71,10 @@
     <Compile Include="Assets\Scripts\EnemyRelatedScripts\TurretSatellite\LifeSpan.cs" />
     <Compile Include="Assets\Scripts\EnemyRelatedScripts\TurretSatellite\SatelliteTurretShoot.cs" />
     <Compile Include="Assets\Scripts\KeepRotating.cs" />
+    <Compile Include="Assets\Scripts\Level3Related Scripts\GameOver.cs" />
+    <Compile Include="Assets\Scripts\Level3Related Scripts\LevelFinished.cs" />
+    <Compile Include="Assets\Scripts\Level3Related Scripts\MarsMovement.cs" />
+    <Compile Include="Assets\Scripts\Level3Related Scripts\MarsScaleOverTime.cs" />
     <Compile Include="Assets\Scripts\LevelManagment\EndOfLevelBehaviour.cs" />
     <Compile Include="Assets\Scripts\LevelManagment\EventReason.cs" />
     <Compile Include="Assets\Scripts\LevelManagment\GameManagerIO.cs" />

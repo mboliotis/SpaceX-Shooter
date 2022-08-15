@@ -148,7 +148,7 @@ public class SatelliteTurretShoot : MonoBehaviour
 
     void RotateCannon()
     {
-        cannonRef.transform.Rotate(0, 0, 1f, Space.Self); 
+        cannonRef.transform.Rotate(0, 0, 360f*Time.deltaTime, Space.Self); 
     }
 
     IEnumerator Reload()

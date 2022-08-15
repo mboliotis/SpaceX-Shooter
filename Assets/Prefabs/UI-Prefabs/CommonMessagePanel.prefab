@@ -357,7 +357,7 @@ MonoBehaviour:
   keyboardSound: {fileID: 7625624119058113425}
   tutorMessage: {fileID: 7625624118605997358}
   playButton: {fileID: 7625624117881325267}
-  messageToDisplay: {fileID: 11400000, guid: 4cc2212758d7e1e4da69911a8a0077d6, type: 2}
+  messageToDisplay: {fileID: 0}
 --- !u!82 &7625624119058113425
 AudioSource:
   m_ObjectHideFlags: 0

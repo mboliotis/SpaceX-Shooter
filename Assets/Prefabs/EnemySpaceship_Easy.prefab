@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigit: {fileID: 4442487493833072677}
-  speed: 10
+  speed: 5
   gameManager: {fileID: 0}
 --- !u!114 &4442487493833072682
 MonoBehaviour:
@@ -201,7 +201,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8692059459585346841, guid: 585d239cb24bb7f4393a46d4c9267fc7,
     type: 3}
   shootPoint: {fileID: 4442487494132297274}
-  timeBetweenAttacks: 0.3
+  timeBetweenAttacks: 0.5
   detectionRange: 20
   shootAudioSource: {fileID: 4442487493833072683}
 --- !u!82 &4442487493833072683

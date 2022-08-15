@@ -2575,24 +2575,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4442487493833072681, guid: 27fa313b8ddd3424296c9ba56708c43a,
         type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4442487493833072681, guid: 27fa313b8ddd3424296c9ba56708c43a,
-        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1347778784}
-    - target: {fileID: 4442487493833072682, guid: 27fa313b8ddd3424296c9ba56708c43a,
-        type: 3}
-      propertyPath: detectionRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4442487493833072682, guid: 27fa313b8ddd3424296c9ba56708c43a,
-        type: 3}
-      propertyPath: timeBetweenAttacks
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27fa313b8ddd3424296c9ba56708c43a, type: 3}
 --- !u!1 &1658035334

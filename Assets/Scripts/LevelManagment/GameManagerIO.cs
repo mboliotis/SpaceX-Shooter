@@ -29,6 +29,10 @@ public class GameManagerIO : MonoBehaviour
             {
                 this.gameObject.GetComponent<GameMaster>().DisplayOutro();
             }
+            else if(message == MessageEnum.MISSION_FAILED)
+            {
+                this.gameObject.GetComponent<GameMaster>().MissionFailed();
+            }
             else
             {
                 if(message == MessageEnum.PLAYER_DEAD)

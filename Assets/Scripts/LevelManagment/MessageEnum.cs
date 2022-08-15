@@ -5,5 +5,6 @@ using UnityEngine;
 public enum MessageEnum 
 {
     GAME_END,
+    MISSION_FAILED,
     PLAYER_DEAD
 }
