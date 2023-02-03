@@ -7,12 +7,13 @@ public class AsteroidMechanics : MonoBehaviour
     
 
     [SerializeField]
-    float timeAlive;
+    float timeAlive;  // the lifespan of the asteroid in seconds
 
     [SerializeField]
-    GameObject asteroidExplosionParticleSystem;
+    GameObject asteroidExplosionParticleSystem; // asteroid explosion-effect particles
 
     GameObject gameManager;
+    
     bool enableThisScript;
 
 
@@ -27,19 +28,8 @@ public class AsteroidMechanics : MonoBehaviour
         StartCoroutine(LifeSpan());
     }
 
-    void EndOfTutorial(EventReason sender)
-    {
-        if(sender == EventReason.GAME_START)
-        {
-            this.enableThisScript = true;
-            Debug.Log("this workds");
-        }
-        else
-        {
-            this.enableThisScript = false;
-        }
-        
-    }
+
+    
 
     // Update is called once per frame
     void Update()
@@ -49,6 +39,8 @@ public class AsteroidMechanics : MonoBehaviour
         {
             return;
         }
+
+
         if (this.gameObject.GetComponent<CommonEnemyInterface>().HitPoints <= 0)
         {
             
@@ -58,10 +50,7 @@ public class AsteroidMechanics : MonoBehaviour
 
             Destroy(this.gameObject);
         }
-
-
-        gameObject.transform.Rotate(0, 0, 180*Time.deltaTime);
-        
+          
     }
 
 
@@ -73,6 +62,11 @@ public class AsteroidMechanics : MonoBehaviour
         }
     }
 
+
+    /*
+     *  This function is responsible for inflict damage to the player.
+     *  Then it will instantiate the asteroid explosion effect particle system and destroy this asteroid gameobject
+     */
     void InflictDamageToPlayer(GameObject p)
     {
         p.GetComponent<SpaceshipMechanics>().TakeDamage();
@@ -83,6 +77,21 @@ public class AsteroidMechanics : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+
+    IEnumerator LifeSpan()
+    {
+        yield return new WaitForSeconds(timeAlive);
+
+        if (this.gameObject != null)
+        {
+            Destroy(this.gameObject);
+        }
+
+
+    }
+
+
+    //=============== Useless Functions (for the time being) ============================
 
     /*
      * This Method is responsible for collision detection.
@@ -111,17 +120,20 @@ public class AsteroidMechanics : MonoBehaviour
         }
         
     }
-     
-
-    IEnumerator LifeSpan()
+    // maybe deprecated (must check!)
+    void EndOfTutorial(EventReason sender)
     {
-        yield return new WaitForSeconds(timeAlive);
-
-        if (this.gameObject != null)
+        if (sender == EventReason.GAME_START)
         {
-            Destroy(this.gameObject);
+            this.enableThisScript = true;
+            Debug.Log("this workds");
+        }
+        else
+        {
+            this.enableThisScript = false;
         }
 
-
     }
+
+    
 }
