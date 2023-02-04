@@ -62,6 +62,8 @@ namespace UnityEditor.Tilemaps
         {
             HandleMouseEnterLeave(sceneView);
 
+            CallOnSceneGUI();
+
             // Case 1093801: Handle only the currently active scene view
             if (sceneView != activeSceneView)
                 return;
@@ -84,7 +86,6 @@ namespace UnityEditor.Tilemaps
                 base.OnGUI();
                 if (InGridEditMode())
                 {
-                    CallOnSceneGUI();
                     if ((grid != null) && (GridPaintingState.activeGrid == this || GridSelection.active))
                     {
                         CallOnPaintSceneGUI();
@@ -136,6 +137,7 @@ namespace UnityEditor.Tilemaps
                 GridPaintingState.activeBrushEditor.OnMouseEnter();
             GridPaintingState.activeGrid = this;
             activeSceneView = sceneView;
+            UpdateMouseGridPosition(true);
             ResetPreviousMousePositionToCurrentPosition();
         }
 
@@ -162,7 +164,7 @@ namespace UnityEditor.Tilemaps
         {
             if (GridPaintingState.activeBrushEditor != null)
             {
-                GridPaintingState.activeBrushEditor.RegisterUndo(brushTarget, EditTypeToBrushTool(EditorTools.EditorTools.activeToolType));
+                GridPaintingState.activeBrushEditor.RegisterUndo(brushTarget, EditTypeToBrushTool(UnityEditor.EditorTools.ToolManager.activeToolType));
             }
         }
 
@@ -229,6 +231,16 @@ namespace UnityEditor.Tilemaps
                 gridBrush.MoveEnd(grid, brushTarget, position);
         }
 
+        protected override bool CustomTool(bool isHotControl, TilemapEditorTool tool, Vector3Int position)
+        {
+            var executed = false;
+            if (grid != null)
+            {
+                executed = tool.HandleTool(isHotControl, grid, brushTarget, position);
+            }
+            return executed;
+        }
+
         protected override void OnEditStart()
         {
             if (GridPaintingState.activeBrushEditor != null && grid != null)
@@ -245,6 +257,8 @@ namespace UnityEditor.Tilemaps
         {
             GridSelection.Clear();
         }
+
+        public override bool isActive => grid != null;
 
         public override void Repaint()
         {
@@ -340,27 +354,39 @@ namespace UnityEditor.Tilemaps
             else if (hasSelection)
                 rect = new RectInt(GridSelection.position.xMin, GridSelection.position.yMin, GridSelection.position.size.x, GridSelection.position.size.y);
 
-            var layoutGrid = tilemap != null ? tilemap : grid as GridLayout;
+            var layoutGrid = tilemap != null ? tilemap.layoutGrid : grid as GridLayout;
             BoundsInt brushBounds = new BoundsInt(new Vector3Int(rect.x, rect.y, zPosition), new Vector3Int(rect.width, rect.height, 1));
             if (GridPaintingState.activeBrushEditor != null)
             {
                 GridPaintingState.activeBrushEditor.OnPaintSceneGUI(layoutGrid, brushTarget, brushBounds
-                    , EditTypeToBrushTool(EditorTools.EditorTools.activeToolType), m_MarqueeStart.HasValue || executing);
+                    , EditTypeToBrushTool(UnityEditor.EditorTools.ToolManager.activeToolType), m_MarqueeStart.HasValue || executing);
             }
             else // Fallback when user hasn't defined custom editor
             {
                 GridBrushEditorBase.OnPaintSceneGUIInternal(layoutGrid, brushTarget, brushBounds
-                    , EditTypeToBrushTool(EditorTools.EditorTools.activeToolType), m_MarqueeStart.HasValue || executing);
+                    , EditTypeToBrushTool(UnityEditor.EditorTools.ToolManager.activeToolType), m_MarqueeStart.HasValue || executing);
             }
         }
 
         void CallOnSceneGUI()
         {
+            var gridLayout = tilemap != null ? tilemap : grid as GridLayout;
+            bool hasSelection = GridSelection.active  && GridSelection.target == brushTarget;
             if (GridPaintingState.activeBrushEditor != null)
             {
-                MethodInfo methodInfo = GridPaintingState.activeBrushEditor.GetType().GetMethod("OnSceneGUI");
-                if (methodInfo != null)
-                    methodInfo.Invoke(GridPaintingState.activeBrushEditor, null);
+                GridPaintingState.activeBrushEditor.OnSceneGUI(gridLayout, brushTarget);
+                if (hasSelection)
+                {
+                    GridPaintingState.activeBrushEditor.OnSelectionSceneGUI(gridLayout, brushTarget);
+                }
+            }
+
+            if (hasSelection)
+            {
+                RectInt rect = new RectInt(GridSelection.position.xMin, GridSelection.position.yMin, GridSelection.position.size.x, GridSelection.position.size.y);
+                BoundsInt brushBounds = new BoundsInt(new Vector3Int(rect.x, rect.y, zPosition), new Vector3Int(rect.width, rect.height, 1));
+                GridBrushEditorBase.OnSceneGUIInternal(gridLayout, brushTarget, brushBounds
+                    , EditTypeToBrushTool(UnityEditor.EditorTools.ToolManager.activeToolType), m_MarqueeStart.HasValue || executing);
             }
         }
     }

@@ -41,10 +41,10 @@ public class BulletMechanics : MonoBehaviour
             col.gameObject.GetComponent<CommonEnemyInterface>().TakeDamage(this.Damage);
             GameObject sparks = Instantiate(collisionSparks);
             sparks.transform.position = this.gameObject.transform.position;
-
+            Destroy(this.gameObject);
         }
         
-        Destroy(this.gameObject);
+        
 
     }
 

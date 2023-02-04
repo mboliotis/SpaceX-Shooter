@@ -102,7 +102,7 @@ public class ShootSpaceship : MonoBehaviour
     void Shoot()
     {
         GameObject bullet = Instantiate(projectilePref);
-        bullet.transform.position = shootPoint.transform.position + new Vector3(0, 2f, 0);
+        bullet.transform.position = shootPoint.transform.position;
         
         shootSound.Play();
 

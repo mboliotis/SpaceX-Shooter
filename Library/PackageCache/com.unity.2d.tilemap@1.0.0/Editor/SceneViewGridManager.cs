@@ -23,6 +23,8 @@ namespace UnityEditor.Tilemaps
         private bool active { get { return m_ActiveGridProxy != null; } }
         internal GridLayout activeGridProxy { get { return m_ActiveGridProxy; } }
 
+        private UnityType m_GridType;
+
         [InitializeOnLoadMethod]
         private static void Initialize()
         {
@@ -43,11 +45,14 @@ namespace UnityEditor.Tilemaps
             SceneView.duringSceneGui += OnSceneGuiDelegate;
             Selection.selectionChanged += UpdateCache;
             EditorApplication.hierarchyChanged += UpdateCache;
-            EditorTools.EditorTools.activeToolChanged += ActiveToolChanged;
+            UnityEditor.EditorTools.ToolManager.activeToolChanged += ActiveToolChanged;
+            EditorApplication.quitting += EditorQuitting;
             GridPaintingState.brushChanged += OnBrushChanged;
             GridPaintingState.scenePaintTargetChanged += OnScenePaintTargetChanged;
             GridSnapping.snapPosition = OnSnapPosition;
             GridSnapping.activeFunc = GetActive;
+
+            m_GridType = UnityType.FindTypeByName("Grid");
 
             m_RegisteredEventHandlers = true;
         }
@@ -70,16 +75,17 @@ namespace UnityEditor.Tilemaps
         private void OnDisable()
         {
             FlushCachedGridProxy();
+            RestoreSceneViewShowGrid();
             SceneView.duringSceneGui -= OnSceneGuiDelegate;
             Selection.selectionChanged -= UpdateCache;
             EditorApplication.hierarchyChanged -= UpdateCache;
-            EditorTools.EditorTools.activeToolChanged -= ActiveToolChanged;
+            EditorApplication.quitting -= EditorQuitting;
+            UnityEditor.EditorTools.ToolManager.activeToolChanged -= ActiveToolChanged;
             GridPaintingState.brushChanged -= OnBrushChanged;
             GridPaintingState.scenePaintTargetChanged -= OnScenePaintTargetChanged;
             GridSnapping.snapPosition = null;
             GridSnapping.activeFunc = null;
             m_RegisteredEventHandlers = false;
-            m_SceneViewShowGridMap.Clear();
         }
 
         private void UpdateCache()
@@ -103,12 +109,36 @@ namespace UnityEditor.Tilemaps
                 }
                 m_ActiveGridProxy = gridProxy;
                 FlushCachedGridProxy();
+                SceneView.RepaintAll();
             }
+        }
+
+        private void EditorQuitting()
+        {
+            if (NeedsRestoreSceneViewShowGrid())
+            {
+                RestoreSceneViewShowGrid();
+                // SceneView.showGrid is part of default window preferences
+                WindowLayout.SaveDefaultWindowPreferences();
+            }
+        }
+
+        internal bool IsGridAnnotationEnabled()
+        {
+            var annotations = AnnotationUtility.GetAnnotations();
+            foreach (var annotation in annotations)
+            {
+                if (annotation.classID == m_GridType.persistentTypeID)
+                {
+                    return annotation.gizmoEnabled > 0;
+                }
+            }
+            return false;
         }
 
         private void OnSceneGuiDelegate(SceneView sceneView)
         {
-            if (active)
+            if (active && sceneView.drawGizmos && IsGridAnnotationEnabled())
                 DrawGrid(activeGridProxy);
         }
 
@@ -132,6 +162,11 @@ namespace UnityEditor.Tilemaps
                 s_LastGridProxyHash = gridHash;
             }
             GridEditorUtility.DrawGridGizmo(gridLayout, gridLayout.transform, sceneViewGridComponentGizmo.Color, ref s_GridProxyMesh, ref s_GridProxyMaterial);
+        }
+
+        private bool NeedsRestoreSceneViewShowGrid()
+        {
+            return m_SceneViewShowGridMap.Count > 0;
         }
 
         private void StoreSceneViewShowGrid(bool value)
